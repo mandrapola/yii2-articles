@@ -22,7 +22,7 @@ return [
     'Structure' => 'Структура',
     'Tree ID' => '',
     'Article Group ID' => 'Код группы',
-    'Child Article Group ID' => '',
+    'Child Article Group ID' => 'Код подгруппы',
     'Create Group' => 'Создать группу',
     'Description' => 'Описание',
     'Groups' => 'Группы',
