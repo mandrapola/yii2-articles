@@ -1,0 +1,21 @@
+{
+    "name": "mandrapola/yii2-articles",
+    "description": "Модуль статей для Yii2",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","article","mandrapola"],
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Khusainov Marat",
+            "email": "hmf@yandex.ru"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "mandrapola\\articles\\": ""
+        }
+    }
+}
