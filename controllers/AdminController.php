@@ -1,6 +1,6 @@
 <?php
-namespace article\controllers;
-use article\models\ArticleSearch;
+namespace mandrapola\article\controllers;
+use mandrapola\article\models\ArticleSearch;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;

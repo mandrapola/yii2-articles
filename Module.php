@@ -1,6 +1,6 @@
 <?php
 
-namespace article;
+namespace mandrapola\article;
 use yii\i18n\PhpMessageSource;
 
 /**

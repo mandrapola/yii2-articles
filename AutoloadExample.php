@@ -1,6 +1,6 @@
 <?php
 
-namespace mandrapola\articles;
+namespace mandrapola\article;
 
 /**
  * This is just an example.

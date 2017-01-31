@@ -1,5 +1,5 @@
 <?php
-namespace article;
+namespace mandrapola\article;
 
 use Yii;
 use yii\base\BootstrapInterface;

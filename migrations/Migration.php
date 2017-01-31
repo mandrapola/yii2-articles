@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace article\migrations;
+namespace mandrapola\article\migrations;
 
 use Yii;
 

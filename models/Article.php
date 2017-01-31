@@ -1,6 +1,6 @@
 <?php
 
-namespace article\models;
+namespace mandrapola\article\models;
 
 use Yii;
 

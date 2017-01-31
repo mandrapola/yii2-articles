@@ -1,10 +1,10 @@
 <?php
 
-namespace article\controllers;
+namespace mandrapola\article\controllers;
 
 use Yii;
-use article\models\Article;
-use article\models\ArticleSearch;
+use mandrapola\article\models\Article;
+use mandrapola\article\models\ArticleSearch;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
