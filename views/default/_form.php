@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use mandrapola\article\models\Tree;
 
 /* @var $this yii\web\View */
 /* @var $model article\models\Article */
@@ -22,7 +23,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'used')->checkbox() ?>
     <?= $form->field($model, 'tree_id')->widget(\kartik\tree\TreeViewInput::className(),[
-        'query' => \article\models\Tree::find()->addOrderBy('root, lft'),
+        'query' => Tree::find()->addOrderBy('root, lft'),
         'headingOptions' => ['label' => 'Categories'],
         'asDropdown' => true,            // will render the tree input widget as a dropdown.
         'multiple' => false,            // set to false if you do not need multiple selection

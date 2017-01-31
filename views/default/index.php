@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php
 $tree = \kartik\tree\TreeView::widget([
 // single query fetch to render the tree
-    'query' => \article\models\Tree::find()->addOrderBy('root, lft'),
+    'query' => mandrapola\article\models\Tree::find()->addOrderBy('root, lft'),
     'headingOptions' => ['label' => 'Categories'],
     'isAdmin' => true,                       // optional (toggle to enable admin mode)
     'displayValue' => 1,                           // initial display value
