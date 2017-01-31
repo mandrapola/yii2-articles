@@ -6,12 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'yii\\composer\\' => array($vendorDir . '/yiisoft/yii2-composer'),
-    'yii\\bootstrap\\' => array($vendorDir . '/yiisoft/yii2-bootstrap'),
-    'yii\\' => array($vendorDir . '/yiisoft/yii2'),
-    'mandrapola\\articles\\' => array($baseDir . '/'),
-    'kartik\\plugins\\fileinput\\' => array($vendorDir . '/kartik-v/bootstrap-fileinput'),
-    'kartik\\file\\' => array($vendorDir . '/kartik-v/yii2-widget-fileinput'),
-    'kartik\\base\\' => array($vendorDir . '/kartik-v/yii2-krajee-base'),
-    'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),
+    'mandrapola\\article\\' => array($baseDir . '/'),
 );
