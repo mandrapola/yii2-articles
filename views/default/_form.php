@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use mandrapola\article\models\Tree;
+use mandrapola\article\widgets\ckeditor\CKEditor;
 
 /* @var $this yii\web\View */
 /* @var $model mandrapola\article\models\Article */
@@ -19,7 +20,7 @@ use mandrapola\article\models\Tree;
 
     <?= $form->field($model, 'anons')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'body')->widget(\common\widgets\ckeditor\CKEditor::className()) ?>
+    <?= $form->field($model, 'body')->widget(CKEditor::className()) ?>
 
     <?= $form->field($model, 'used')->checkbox() ?>
     <?= $form->field($model, 'tree_id')->widget(\kartik\tree\TreeViewInput::className(),[
