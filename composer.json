@@ -23,5 +23,8 @@
     "psr-4": {
       "mandrapola\\article\\": ""
     }
+  },
+  "extra": {
+    "bootstrap": "mandrapola\\article\\Bootstrap"
   }
 }
