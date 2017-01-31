@@ -15,7 +15,7 @@ class Bootstrap implements BootstrapInterface
 {
     public function bootstrap($app)
     {
-        Yii::setAlias('@article', dirname(dirname(__DIR__)) . '/vendor/mandrapola/yii2-articles');
+
         if (!isset($app->get('i18n')->translations['article*'])) {
             $app->get('i18n')->translations['article*'] = [
                 'class' => PhpMessageSource::className(),
