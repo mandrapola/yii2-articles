@@ -5,7 +5,7 @@ use yii\widgets\ActiveForm;
 use mandrapola\article\models\Tree;
 
 /* @var $this yii\web\View */
-/* @var $model article\models\Article */
+/* @var $model mandrapola\article\models\Article */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 

@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model article\models\Article */
+/* @var $model mandrapola\article\models\Article */
 
 $this->title = Yii::t('article', 'Create Article');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('article', 'Articles'), 'url' => ['index']];

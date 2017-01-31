@@ -20,7 +20,7 @@
         ['class' => 'yii\grid\SerialColumn'],
         [
             'attribute' => 'tree.name',
-            'label' => Yii::t('hutorg', 'Category')
+            'label' => Yii::t('article', 'Category')
         ],
         'title',
         'alias',

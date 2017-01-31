@@ -27,12 +27,12 @@ $articles = $this->render('articles', ['dataProvider' => $dataProvider, 'searchM
 ?>
 <?= \yii\bootstrap\Tabs::widget([
     'items' => [[
-        'label' => Yii::t('hutorg', 'Structure'),
+        'label' => Yii::t('article', 'Structure'),
         'content' => $tree,
         'active' => true,
     ],
     [
-        'label' => Yii::t('hutorg', 'Articles'),
+        'label' => Yii::t('article', 'Articles'),
         'content' => $articles,
     ]
 ]]); ?>

@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model article\models\Article */
+/* @var $model mandrapola\article\models\Article */
 
 $this->title = Yii::t('article', 'Update {modelClass}: ', [
     'modelClass' => 'Article',

@@ -6,7 +6,7 @@
  * Time: 9:29
  */
 use kartik\tree\TreeView;
-use use mandrapola\article\models\Tree;
+use mandrapola\article\models\Tree;
 echo TreeView::widget([
     // single query fetch to render the tree
     'query'             => Tree::find()->addOrderBy('root, lft'),

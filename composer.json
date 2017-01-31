@@ -16,8 +16,6 @@
     }
   ],
   "require": {
-    "yiisoft/yii2": "~2.0.0",
-    "kartik-v/yii2-tree-manager": "@dev"
   },
   "autoload": {
     "psr-4": {
