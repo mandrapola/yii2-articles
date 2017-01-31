@@ -19,7 +19,7 @@ class Bootstrap implements BootstrapInterface
         if (!isset($app->get('i18n')->translations['article*'])) {
             $app->get('i18n')->translations['article*'] = [
                 'class' => PhpMessageSource::className(),
-                'basePath' => '@article/messages',
+                'basePath' => 'mandrapola\article\messages',
                 'languages' => ['ru'],
             ];
         }
