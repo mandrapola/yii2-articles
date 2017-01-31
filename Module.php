@@ -22,7 +22,7 @@ class Module extends \yii\base\Module
         if (!isset(\Yii::$app->get('i18n')->translations['article*'])) {
             \Yii::$app->get('i18n')->translations['article*'] = [
                 'class' => PhpMessageSource::className(),
-                'basePath' => '@article/messages',
+                'basePath' => __DIR__.'/messages',
             ];
         }
     }
