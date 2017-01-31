@@ -1,5 +1,5 @@
 <?php
-use article\migrations\Migration;
+use mandrapola\article\migrations\Migration;
 use yii\db\mysql\Schema;
 
 class m170113_065238_table_article extends Migration
