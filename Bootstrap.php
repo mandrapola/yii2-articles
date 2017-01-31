@@ -20,7 +20,6 @@ class Bootstrap implements BootstrapInterface
             $app->get('i18n')->translations['article*'] = [
                 'class' => PhpMessageSource::className(),
                 'basePath' => __DIR__ . '/messages',
-                'languages' => ['ru'],
             ];
         }
     }
