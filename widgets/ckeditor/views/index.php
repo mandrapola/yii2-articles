@@ -5,7 +5,7 @@
  * Date: 15.01.17
  * Time: 14:48
  */
-\common\widgets\ckeditor\CKEditorAsset::register($this);
+\mandrapola\article\widgets\ckeditor\CKEditorAsset::register($this);
 ?>
 <?=\yii\helpers\Html::activeTextarea($data->model, $data->attribute, $data->options);?>
 <script>
