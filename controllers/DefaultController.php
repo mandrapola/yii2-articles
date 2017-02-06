@@ -1,5 +1,6 @@
 <?php
 namespace mandrapola\article\controllers;
+use mandrapola\article\models\Article;
 use mandrapola\article\models\ArticleSearch;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -42,5 +43,11 @@ class DefaultController extends Controller
     }
     public function actionTree(){
         return $this->render('tree');
+    }
+
+    public function actionView($id)
+    {
+        $model = Article::findOne($id);
+        return $this->render('view',['model'=>$model]);
     }
 }
