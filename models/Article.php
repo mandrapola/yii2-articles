@@ -68,4 +68,5 @@ class Article extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Tree::className(), ['id' => 'tree_id']);
     }
+
 }

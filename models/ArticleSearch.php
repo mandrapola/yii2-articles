@@ -6,6 +6,8 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use mandrapola\article\models\Article;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 
 /**
  * ArticleSearch represents the model behind the search form of `article\models\Article`.
@@ -72,5 +74,12 @@ class ArticleSearch extends Article
             ->andFilterWhere(['like', 'body', $this->body]);
 
         return $dataProvider;
+    }
+    public static function getRules()
+    {
+        $query = Article::find();
+        $query->andWhere(['not','alias',null]);
+        $articles = $query->all();
+        return ArrayHelper::map($articles,'alias',function($model){return Url::to(['/article/default/view','id'=>$model->id]);});
     }
 }

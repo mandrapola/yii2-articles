@@ -8,7 +8,7 @@
 <div class="article-index">
 
 <p>
-    <?= \yii\bootstrap\Html::a(Yii::t('article', 'Create Article'), ['/article/default/create'], ['class' => 'btn btn-success']) ?>
+    <?= \yii\bootstrap\Html::a(Yii::t('article', 'Create Article'), ['/article/admin/create'], ['class' => 'btn btn-success']) ?>
 </p>
 
 
