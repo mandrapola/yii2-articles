@@ -36,7 +36,7 @@ class DefaultController extends Controller
     }
     protected function findModelBySlug($slug)
     {
-        if (($model = Article::findOne(['slug' => $slug])) !== null) {
+        if (($model = Article::findOne(['alias' => $slug])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException();
