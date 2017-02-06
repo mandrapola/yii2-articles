@@ -75,11 +75,5 @@ class ArticleSearch extends Article
 
         return $dataProvider;
     }
-    public static function getRules()
-    {
-        $query = Article::find();
-        $query->andWhere(['not','alias',null]);
-        $articles = $query->all();
-        return ArrayHelper::map($articles,'alias',function($model){return Url::to(['/article/default/view','id'=>$model->id]);});
-    }
+
 }
