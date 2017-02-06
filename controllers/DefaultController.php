@@ -14,24 +14,7 @@ use yii\web\Controller;
  */
 class DefaultController extends Controller
 {
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['index', 'view'],
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['?'],
-                    ],
-                ],
-            ],
-        ];
-    }
-    /**
-     * @return
-     */
+
     public function actionIndex(){
         $searchModel = new ArticleSearch();
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
