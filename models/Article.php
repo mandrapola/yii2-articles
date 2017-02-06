@@ -76,6 +76,7 @@ class Article extends \yii\db\ActiveRecord
             [
                 'class' => SluggableBehavior::className(),
                 'attribute' => 'alias',
+                'slugAttribute' => 'alias',
             ],
         ];
     }
