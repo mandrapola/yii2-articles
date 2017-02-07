@@ -6,6 +6,8 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use mandrapola\article\models\Article;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 
 /**
  * ArticleSearch represents the model behind the search form of `article\models\Article`.
@@ -73,4 +75,5 @@ class ArticleSearch extends Article
 
         return $dataProvider;
     }
+
 }

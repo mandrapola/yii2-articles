@@ -5,6 +5,7 @@ use mandrapola\article\models\ArticleSearch;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 /**
  * Created by PhpStorm.
@@ -28,9 +29,17 @@ class DefaultController extends Controller
         return $this->render('tree');
     }
 
-    public function actionView($id)
+    public function actionView($slug)
     {
-        $model = Article::findOne($id);
+        $model = $this->findModelBySlug($slug);
         return $this->render('view',['model'=>$model]);
+    }
+    protected function findModelBySlug($slug)
+    {
+        if (($model = Article::findOne(['alias' => $slug])) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException();
+        }
     }
 }
