@@ -14,9 +14,9 @@ class Article extends \yii\bootstrap\Widget
 {
 
     public $model;
-
+    public $class;
     public function run()
     {
-        return $this->render('view', ['model' => $this->model]);
+        return $this->render('view', ['model' => $this->model,'class' => $this->class]);
     }
 }
