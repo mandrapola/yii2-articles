@@ -10,7 +10,7 @@ use yii\web\AssetBundle;
  */
 class CKEditorAsset extends AssetBundle
 {
-    public $sourcePath = __DIR__ . '/assets/standart';
+    public $sourcePath = __DIR__ . '/assets/all';
     public $css = [
 
     ];
