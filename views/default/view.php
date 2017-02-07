@@ -7,5 +7,7 @@
  */
 $this->title = $model->title;
 ?>
+<div class="<?= Yii::$app->controller->module->classContainer?>">
 <?= \yii\helpers\Html::tag('h1',$model->title);?>
 <?= Yii::$app->formatter->asRaw($model->body);?>
+</div>
