@@ -23,14 +23,8 @@ use mandrapola\article\widgets\ckeditor\CKEditor;
     <?= $form->field($model, 'body')->widget(CKEditor::className()) ?>
 
     <?= $form->field($model, 'used')->checkbox() ?>
-    <?= $form->field($model, 'tree_id')->widget(\kartik\tree\TreeViewInput::className(),[
-        'query' => Tree::find()->addOrderBy('root, lft'),
-        'headingOptions' => ['label' => 'Categories'],
-        'asDropdown' => true,            // will render the tree input widget as a dropdown.
-        'multiple' => false,            // set to false if you do not need multiple selection
-        'fontAwesome' => false,            // render font awesome icons
 
-    ]) ?>
+    <?= $form->field($model, 'tree_id')->dropDownList(\yii\helpers\ArrayHelper::map(Tree::find()->all(),'id','name')) ?>
 
     <?= $form->field($model, 'created_at')->textInput() ?>
 
