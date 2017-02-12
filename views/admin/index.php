@@ -10,7 +10,6 @@ use yii\grid\GridView;
 $this->title = Yii::t('article', 'Articles');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
 <?php
 $tree = \kartik\tree\TreeView::widget([
 // single query fetch to render the tree
@@ -25,6 +24,7 @@ $tree = \kartik\tree\TreeView::widget([
 $articles = $this->render('articles', ['dataProvider' => $dataProvider, 'searchModel' => $searchModel]);
 
 ?>
+<div class="container">
 <?= \yii\bootstrap\Tabs::widget([
     'items' => [[
         'label' => Yii::t('article', 'Structure'),
@@ -37,3 +37,4 @@ $articles = $this->render('articles', ['dataProvider' => $dataProvider, 'searchM
     ]
 ]]); ?>
 
+</div>
