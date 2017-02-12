@@ -8,7 +8,7 @@
 $this->title .= ' '.$model->title;
 $this->registerMetaTag(['name' => 'og:description','content' => $model->anons]);
 ?>
-<div class="<?= $class?>">
+<div class="<?= $classContainer?>">
 <?= \yii\helpers\Html::tag('h1',$model->title);?>
 <?= Yii::$app->formatter->asRaw($model->body);?>
 </div>

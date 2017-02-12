@@ -14,9 +14,13 @@ class Article extends \yii\bootstrap\Widget
 {
 
     public $model;
-    public $class;
+    public $classContainer;
+    public function init()
+    {
+        parent::init();
+    }
     public function run()
     {
-        return $this->render('view', ['model' => $this->model,'class' => $this->class]);
+        return $this->render('view', ['model' => $this->model,'classContainer' => $this->classContainer]);
     }
 }

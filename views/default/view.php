@@ -1,1 +1,1 @@
-<?= \mandrapola\article\widgets\article\Article::widget(['model'=>$model,'class'=>$class])?>
+<?= \mandrapola\article\widgets\article\Article::widget(['model'=>$model,'classContainer'=>$classContainer])?>
