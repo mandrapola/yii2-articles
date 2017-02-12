@@ -6,6 +6,7 @@
  * Time: 15:49
  */
 $this->title .= ' '.$model->title;
+$this->registerMetaTag(['name' => 'og:description','content' => $model->anons]);
 ?>
 <div class="<?= $class?>">
 <?= \yii\helpers\Html::tag('h1',$model->title);?>
