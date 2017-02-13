@@ -20,7 +20,6 @@ $tree = \kartik\tree\TreeView::widget([
     'softDelete' => true,                        // normally not needed to change
     'cacheSettings' => ['enableCache' => true]      // normally not needed to change
 ]);
-
 $articles = $this->render('articles', ['dataProvider' => $dataProvider, 'searchModel' => $searchModel]);
 
 ?>

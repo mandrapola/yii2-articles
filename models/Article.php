@@ -70,15 +70,15 @@ class Article extends \yii\db\ActiveRecord
         return $this->hasOne(Tree::className(), ['id' => 'tree_id']);
     }
 
-    public function behaviors()
-    {
-        return [
-            [
-                'class' => SluggableBehavior::className(),
-                'attribute' => 'alias',
-                'slugAttribute' => 'alias',
-            ],
-        ];
-    }
+//    public function behaviors()
+//    {
+//        return [
+//            [
+//                'class' => SluggableBehavior::className(),
+//                'attribute' => 'alias',
+//                'slugAttribute' => 'alias',
+//            ],
+//        ];
+//    }
 
 }

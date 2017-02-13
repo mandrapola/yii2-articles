@@ -10,7 +10,10 @@ $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('article', 'Articles'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="container">
 <div class="article-view">
+
+
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -40,4 +43,6 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ])?>
     <?= Yii::$app->formatter->asRaw($model->body);?>
+</div>
+
 </div>

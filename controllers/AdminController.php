@@ -47,6 +47,7 @@ class AdminController extends Controller
     public function actionIndex()
     {
         $searchModel = new ArticleSearch();
+//        var_dump(Yii::$app->request->queryParams);die;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
