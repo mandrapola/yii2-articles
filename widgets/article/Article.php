@@ -18,6 +18,7 @@ class Article extends \yii\bootstrap\Widget
     public function init()
     {
         parent::init();
+        $this->classContainer = array_reverse($this->classContainer);
     }
     public function run()
     {

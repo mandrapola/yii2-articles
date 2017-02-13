@@ -8,7 +8,7 @@ use yii\i18n\PhpMessageSource;
  */
 class Module extends \yii\base\Module
 {
-    public $classContainer = 'container';
+    public $classContainer = ['container','content'];
     /**
      * @inheritdoc
      */

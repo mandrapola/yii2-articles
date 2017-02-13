@@ -12,6 +12,6 @@ foreach ($classContainer as $class){
     $content=\yii\helpers\Html::tag('div',$content,['class'=>$class]);
 }
 echo $content;
-?>
+
 
 
