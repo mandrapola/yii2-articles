@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $searchModel mandrapola\article\models\ArticleSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-\Yii::$app->layout = 'main';
+
 $this->title = Yii::t('article', 'Articles');
 $this->params['breadcrumbs'][] = $this->title;
 ?>

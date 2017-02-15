@@ -20,6 +20,6 @@ $this->params['breadcrumbs'][] = Yii::t('article', 'Update');
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
+</div>
+</div>
 
-</div>
-</div>
