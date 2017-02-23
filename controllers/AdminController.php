@@ -19,7 +19,7 @@ class AdminController extends Controller
      * @inheritdoc
      */
     public function behaviors()
-    {
+    {\Yii::$app->layout='main';
         return [
             'access' => [
                 'class' => AccessControl::className(),

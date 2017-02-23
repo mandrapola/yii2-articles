@@ -15,13 +15,15 @@ class Article extends \yii\bootstrap\Widget
 
     public $model;
     public $classContainer;
+    public $view = 'view';
     public function init()
     {
         parent::init();
         $this->classContainer = array_reverse($this->classContainer);
+        $this->view = $this->model->template?:'view';
     }
     public function run()
     {
-        return $this->render('view', ['model' => $this->model,'classContainer' => $this->classContainer]);
+        return $this->render($this->view, ['model' => $this->model,'classContainer' => $this->classContainer]);
     }
 }

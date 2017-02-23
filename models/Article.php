@@ -40,6 +40,7 @@ class Article extends \yii\db\ActiveRecord
             [['used', 'tree_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['title', 'alias', 'anons'], 'string', 'max' => 250],
+            [['template'], 'string'],
             [['tree_id'], 'exist', 'skipOnError' => true, 'targetClass' => Tree::className(), 'targetAttribute' => ['tree_id' => 'id']],
         ];
     }
@@ -59,6 +60,7 @@ class Article extends \yii\db\ActiveRecord
             'tree_id' => Yii::t('article', 'Tree ID'),
             'created_at' => Yii::t('article', 'Created At'),
             'updated_at' => Yii::t('article', 'Updated At'),
+            'template' => Yii::t('article', 'Template'),
         ];
     }
 
@@ -69,7 +71,20 @@ class Article extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Tree::className(), ['id' => 'tree_id']);
     }
-
+    public function getNext()
+    {
+        return Article::find()
+            ->andWhere(['tree_id'=>$this->tree_id])
+            ->andWhere(['>','created_at',$this->created_at])
+            ->one();
+    }
+    public function getPrev()
+    {
+        return Article::find()
+            ->andWhere(['tree_id'=>$this->tree_id])
+            ->andWhere(['<','created_at',$this->created_at])
+            ->one();
+    }
 //    public function behaviors()
 //    {
 //        return [

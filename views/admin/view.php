@@ -38,6 +38,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'used:boolean',
             'tree.name',
+            [
+                'attribute'=>'template',
+                'label' => 'Шаблон',
+                'value' => function($model){
+                    return \Yii::$app->controller->module->template[$model->template];
+                }
+            ],
             'created_at',
             'updated_at',
         ],

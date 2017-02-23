@@ -26,6 +26,8 @@ use mandrapola\article\widgets\ckeditor\CKEditor;
 
     <?= $form->field($model, 'tree_id')->dropDownList(\yii\helpers\ArrayHelper::map(Tree::find()->all(),'id','name')) ?>
 
+    <?= $form->field($model, 'template')->dropDownList( \Yii::$app->controller->module->template) ?>
+
     <?= $form->field($model, 'created_at')->textInput() ?>
 
     <?= $form->field($model, 'updated_at')->textInput() ?>
