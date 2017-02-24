@@ -2,6 +2,7 @@
 
 namespace mandrapola\article\models;
 
+use app\helpers\Inflector;
 use Yii;
 use yii\behaviors\SluggableBehavior;
 
@@ -76,6 +77,7 @@ class Article extends \yii\db\ActiveRecord
         return Article::find()
             ->andWhere(['tree_id'=>$this->tree_id])
             ->andWhere(['>','created_at',$this->created_at])
+            ->orderBy(['created_at'=>SORT_ASC])
             ->one();
     }
     public function getPrev()
@@ -83,7 +85,19 @@ class Article extends \yii\db\ActiveRecord
         return Article::find()
             ->andWhere(['tree_id'=>$this->tree_id])
             ->andWhere(['<','created_at',$this->created_at])
+            ->orderBy(['created_at'=>SORT_DESC])
             ->one();
+    }
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+
+            $this->alias = $this->alias?:Inflector::slug($this->title);
+
+            return true;
+        }
+        return false;
+
     }
 //    public function behaviors()
 //    {

@@ -71,6 +71,7 @@ class ArticleSearch extends Article
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'alias', $this->alias])
             ->andFilterWhere(['like', 'anons', $this->anons])
+            ->andFilterWhere(['=', 'used', $this->used])
             ->andFilterWhere(['like', 'body', $this->body]);
 
         return $dataProvider;

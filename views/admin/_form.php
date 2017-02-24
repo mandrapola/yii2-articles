@@ -24,7 +24,7 @@ use mandrapola\article\widgets\ckeditor\CKEditor;
 
     <?= $form->field($model, 'used')->checkbox() ?>
 
-    <?= $form->field($model, 'tree_id')->dropDownList(\yii\helpers\ArrayHelper::map(Tree::find()->all(),'id','name')) ?>
+    <?= $form->field($model, 'tree_id')->dropDownList(\yii\helpers\ArrayHelper::map(Tree::find()->all(),'id','name',function($model){return $model->parent?$model->parent->name:'Корень';})) ?>
 
     <?= $form->field($model, 'template')->dropDownList( \Yii::$app->controller->module->template) ?>
 
