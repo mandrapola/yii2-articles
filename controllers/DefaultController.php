@@ -32,7 +32,6 @@ class DefaultController extends Controller
     public function actionView($slug)
     {
         $model = $this->findModelBySlug($slug);
-        $breadcrumb = [['label'=>$model->title]];
         return $this->render('view',['model'=>$model,'classContainer' => $this->module->classContainer]);
     }
     protected function findModelBySlug($slug)
