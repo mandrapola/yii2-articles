@@ -19,9 +19,9 @@ class ComposerAutoloaderInit08fe5d1623c9db97b6ce11f5227321ef
             return self::$loader;
         }
 
-        spl_autoload_register(array('ComposerAutoloaderInit08fe5d1623c9db97b6ce11f5227321ef', 'loadClassLoader'), true, true);
+        spl_autoload_register(['ComposerAutoloaderInit08fe5d1623c9db97b6ce11f5227321ef', 'loadClassLoader'], true, true);
         self::$loader = $loader = new \Composer\Autoload\ClassLoader();
-        spl_autoload_unregister(array('ComposerAutoloaderInit08fe5d1623c9db97b6ce11f5227321ef', 'loadClassLoader'));
+        spl_autoload_unregister(['ComposerAutoloaderInit08fe5d1623c9db97b6ce11f5227321ef', 'loadClassLoader']);
 
         $useStaticLoader = PHP_VERSION_ID >= 50600 && !defined('HHVM_VERSION');
         if ($useStaticLoader) {

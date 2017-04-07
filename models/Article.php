@@ -2,9 +2,9 @@
 
 namespace mandrapola\article\models;
 
-use yii\helpers\Inflector;
 use Yii;
-use yii\behaviors\SluggableBehavior;
+use yii\helpers\Inflector;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "article".
@@ -52,16 +52,16 @@ class Article extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('article', 'ID'),
-            'title' => Yii::t('article', 'Title'),
-            'alias' => Yii::t('article', 'Alias'),
-            'anons' => Yii::t('article', 'Anons'),
-            'body' => Yii::t('article', 'Body'),
-            'used' => Yii::t('article', 'Used'),
-            'tree_id' => Yii::t('article', 'Tree ID'),
+            'id'         => Yii::t('article', 'ID'),
+            'title'      => Yii::t('article', 'Title'),
+            'alias'      => Yii::t('article', 'Alias'),
+            'anons'      => Yii::t('article', 'Anons'),
+            'body'       => Yii::t('article', 'Body'),
+            'used'       => Yii::t('article', 'Used'),
+            'tree_id'    => Yii::t('article', 'Tree ID'),
             'created_at' => Yii::t('article', 'Created At'),
             'updated_at' => Yii::t('article', 'Updated At'),
-            'template' => Yii::t('article', 'Template'),
+            'template'   => Yii::t('article', 'Template'),
         ];
     }
 
@@ -72,32 +72,40 @@ class Article extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Tree::className(), ['id' => 'tree_id']);
     }
+
     public function getNext()
     {
         return Article::find()
-            ->andWhere(['tree_id'=>$this->tree_id])
-            ->andWhere(['>','created_at',$this->created_at])
-            ->orderBy(['created_at'=>SORT_ASC])
+            ->andWhere(['tree_id' => $this->tree_id])
+            ->andWhere(['>', 'created_at', $this->created_at])
+            ->orderBy(['created_at' => SORT_ASC])
             ->one();
     }
+
     public function getPrev()
     {
         return Article::find()
-            ->andWhere(['tree_id'=>$this->tree_id])
-            ->andWhere(['<','created_at',$this->created_at])
-            ->orderBy(['created_at'=>SORT_DESC])
+            ->andWhere(['tree_id' => $this->tree_id])
+            ->andWhere(['<', 'created_at', $this->created_at])
+            ->orderBy(['created_at' => SORT_DESC])
             ->one();
     }
+
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
 
-            $this->alias = $this->alias?:Inflector::slug($this->title);
+            $this->alias = $this->alias ?: Inflector::slug($this->title);
 
             return true;
         }
+
         return false;
 
+    }
+
+    public function getItemNavBar(){
+        return [['label'=>$this->title,'url'=>Url::to(['article/default/view','slug'=>$this->title,'razdel'=>Inflector::slug($this->tree->name)])]];
     }
 //    public function behaviors()
 //    {

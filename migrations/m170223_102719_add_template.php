@@ -10,12 +10,12 @@ class m170223_102719_add_template extends Migration
     public function up()
     {
         $this->addColumn($this->table, 'template', Schema::TYPE_STRING);
-        $this->createIndex('template_index',$this->table,'template');
+        $this->createIndex('template_index', $this->table, 'template');
     }
 
     public function down()
     {
-        $this->dropIndex('template_index',$this->table);
+        $this->dropIndex('template_index', $this->table);
         $this->dropColumn($this->table, 'template');
     }
 

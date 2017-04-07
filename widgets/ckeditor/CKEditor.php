@@ -20,6 +20,7 @@ class CKEditor extends \yii\bootstrap\Widget
     public $field;
     public $name;
     public $options = ['class' => 'form-control'];
+
     public function init()
     {
 //        $this->options['id'] = Html::getInputId($this->model, $this->attribute);
@@ -27,7 +28,7 @@ class CKEditor extends \yii\bootstrap\Widget
 
         if ($this->hasModel()) {
             $this->value = Html::getAttributeValue($this->model, $this->attribute);
-            $this->name = Html::getInputName($this->model,$this->attribute);
+            $this->name = Html::getInputName($this->model, $this->attribute);
         }
 
     }

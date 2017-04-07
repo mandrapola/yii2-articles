@@ -2,10 +2,10 @@
 
 namespace mandrapola\article\models;
 
+use mandrapola\article\models\Article;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use mandrapola\article\models\Article;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 
@@ -61,9 +61,9 @@ class ArticleSearch extends Article
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'used' => $this->used,
-            'tree_id' => $this->tree_id,
+            'id'         => $this->id,
+            'used'       => $this->used,
+            'tree_id'    => $this->tree_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
@@ -77,4 +77,21 @@ class ArticleSearch extends Article
         return $dataProvider;
     }
 
+    public function itemsNavBar($params){
+        $query = Article::find();
+        $this->load($params);
+        $query->andFilterWhere([
+            'id'         => $this->id,
+            'used'       => $this->used,
+            'tree_id'    => $this->tree_id,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+        ]);
+        $models =$query->all();
+        foreach($models as $item)
+        {
+            $items[]=$item->itemNavbar;
+        }
+        return $items;
+}
 }

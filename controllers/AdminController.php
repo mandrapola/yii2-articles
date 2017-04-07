@@ -2,13 +2,13 @@
 
 namespace mandrapola\article\controllers;
 
-use Yii;
 use mandrapola\article\models\Article;
 use mandrapola\article\models\ArticleSearch;
+use Yii;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * ArticleController implements the CRUD actions for Article model.
@@ -19,20 +19,22 @@ class AdminController extends Controller
      * @inheritdoc
      */
     public function behaviors()
-    {\Yii::$app->layout='main';
+    {
+        \Yii::$app->layout = 'main';
+
         return [
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index','view','update','create','delete'],
-                        'allow' => true,
-                        'roles' => ['admin'],
+                        'actions' => ['index', 'view', 'update', 'create', 'delete'],
+                        'allow'   => true,
+                        'roles'   => ['admin'],
                     ],
                 ],
             ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
+            'verbs'  => [
+                'class'   => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
                 ],
@@ -51,7 +53,7 @@ class AdminController extends Controller
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
+            'searchModel'  => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }

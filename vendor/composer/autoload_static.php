@@ -6,19 +6,19 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit08fe5d1623c9db97b6ce11f5227321ef
 {
-    public static $prefixLengthsPsr4 = array (
-        'm' => 
-        array (
-            'mandrapola\\article\\' => 19,
-        ),
-    );
+    public static $prefixLengthsPsr4 = [
+        'm' =>
+            [
+                'mandrapola\\article\\' => 19,
+            ],
+    ];
 
-    public static $prefixDirsPsr4 = array (
-        'mandrapola\\article\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/',
-        ),
-    );
+    public static $prefixDirsPsr4 = [
+        'mandrapola\\article\\' =>
+            [
+                0 => __DIR__ . '/../..' . '/',
+            ],
+    ];
 
     public static function getInitializer(ClassLoader $loader)
     {

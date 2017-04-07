@@ -7,7 +7,7 @@
  */
 \mandrapola\article\widgets\ckeditor\CKEditorAsset::register($this);
 ?>
-<?=\yii\helpers\Html::activeTextarea($data->model, $data->attribute, $data->options);?>
+<?= \yii\helpers\Html::activeTextarea($data->model, $data->attribute, $data->options); ?>
 <script>
     CKEDITOR.replace('<?=$data->name?>');
 </script>

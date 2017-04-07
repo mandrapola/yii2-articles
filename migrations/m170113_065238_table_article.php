@@ -9,13 +9,13 @@ class m170113_065238_table_article extends Migration
     public function up()
     {
         $this->createTable($this->table, [
-            'id' => Schema::TYPE_PK,
-            'title' => Schema::TYPE_STRING . '(250)',
-            'alias' => Schema::TYPE_STRING . '(250)',
-            'anons' => Schema::TYPE_STRING . '(250)',
-            'body' => Schema::TYPE_TEXT,
-            'used' => Schema::TYPE_BOOLEAN,
-            'tree_id' => Schema::TYPE_INTEGER,
+            'id'         => Schema::TYPE_PK,
+            'title'      => Schema::TYPE_STRING . '(250)',
+            'alias'      => Schema::TYPE_STRING . '(250)',
+            'anons'      => Schema::TYPE_STRING . '(250)',
+            'body'       => Schema::TYPE_TEXT,
+            'used'       => Schema::TYPE_BOOLEAN,
+            'tree_id'    => Schema::TYPE_INTEGER,
             'created_at' => Schema::TYPE_TIMESTAMP,
             'updated_at' => Schema::TYPE_TIMESTAMP
         ]);

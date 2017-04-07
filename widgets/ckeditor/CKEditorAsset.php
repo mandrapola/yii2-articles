@@ -1,5 +1,6 @@
 <?php
 namespace mandrapola\article\widgets\ckeditor;
+
 use yii\web\AssetBundle;
 
 /**
@@ -14,7 +15,7 @@ class CKEditorAsset extends AssetBundle
     public $css = [
 
     ];
-    public $js =[
+    public $js = [
 
     ];
     public $head_js = [

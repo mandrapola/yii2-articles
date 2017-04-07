@@ -6,20 +6,20 @@ use yii\helpers\Html;
 /* @var $model mandrapola\article\models\Article */
 
 $this->title = Yii::t('article', 'Update {modelClass}: ', [
-    'modelClass' => 'Article',
-]) . $model->title;
+        'modelClass' => 'Article',
+    ]) . $model->title;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('article', 'Articles'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('article', 'Update');
 ?>
 <div class="container">
-<div class="article-update">
+    <div class="article-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+        <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
-</div>
+        <?= $this->render('_form', [
+            'model' => $model,
+        ]) ?>
+    </div>
 </div>
 

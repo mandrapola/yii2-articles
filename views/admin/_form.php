@@ -1,9 +1,9 @@
 <?php
 
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
 use mandrapola\article\models\Tree;
 use mandrapola\article\widgets\ckeditor\CKEditor;
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model mandrapola\article\models\Article */
@@ -24,9 +24,11 @@ use mandrapola\article\widgets\ckeditor\CKEditor;
 
     <?= $form->field($model, 'used')->checkbox() ?>
 
-    <?= $form->field($model, 'tree_id')->dropDownList(\yii\helpers\ArrayHelper::map(Tree::find()->all(),'id','name',function($model){return $model->parent?$model->parent->name:'Корень';})) ?>
+    <?= $form->field($model, 'tree_id')->dropDownList(\yii\helpers\ArrayHelper::map(Tree::find()->all(), 'id', 'name', function ($model) {
+        return $model->parent ? $model->parent->name : 'Корень';
+    })) ?>
 
-    <?= $form->field($model, 'template')->dropDownList( \Yii::$app->controller->module->template) ?>
+    <?= $form->field($model, 'template')->dropDownList(\Yii::$app->controller->module->template) ?>
 
     <?= $form->field($model, 'created_at')->textInput() ?>
 

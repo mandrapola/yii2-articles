@@ -1,9 +1,8 @@
 <?php
 namespace mandrapola\article\controllers;
+
 use mandrapola\article\models\Article;
 use mandrapola\article\models\ArticleSearch;
-use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -16,24 +15,29 @@ use yii\web\NotFoundHttpException;
 class DefaultController extends Controller
 {
 
-    public function actionIndex(){
+    public function actionIndex()
+    {
         $searchModel = new ArticleSearch();
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
+            'searchModel'  => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
-    public function actionTree(){
+
+    public function actionTree()
+    {
         return $this->render('tree');
     }
 
     public function actionView($slug)
     {
         $model = $this->findModelBySlug($slug);
-        return $this->render('view',['model'=>$model,'classContainer' => $this->module->classContainer]);
+
+        return $this->render('view', ['model' => $model, 'classContainer' => $this->module->classContainer]);
     }
+
     protected function findModelBySlug($slug)
     {
         if (($model = Article::findOne(['alias' => $slug])) !== null) {
