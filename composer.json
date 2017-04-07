@@ -16,6 +16,7 @@
     }
   ],
   "require": {
+    "kartik-v/yii2-tree-manager": "@dev"
   },
   "autoload": {
     "psr-4": {
