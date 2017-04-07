@@ -2,7 +2,7 @@
 
 namespace mandrapola\article\models;
 
-use app\helpers\Inflector;
+use yii\helpers\Inflector;
 use Yii;
 use yii\behaviors\SluggableBehavior;
 
