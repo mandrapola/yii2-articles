@@ -2,32 +2,15 @@
 
 namespace mandrapola\article\models;
 
-use mandrapola\article\models\Article;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use yii\helpers\ArrayHelper;
-use yii\helpers\Url;
 
 /**
  * ArticleSearch represents the model behind the search form of `article\models\Article`.
  */
 class ArticleSearch extends Article
 {
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['id', 'used', 'tree_id'], 'integer'],
-            [['title', 'alias', 'anons', 'body', 'created_at', 'updated_at'], 'safe'],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function scenarios()
     {
         // bypass scenarios() implementation in the parent class
@@ -54,8 +37,6 @@ class ArticleSearch extends Article
         $this->load($params);
 
         if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
             return $dataProvider;
         }
 
@@ -78,12 +59,14 @@ class ArticleSearch extends Article
     }
 
     public function itemsNavBar($params){
+        $tree = Tree::findOne(['name'=>$params['tree']]);
+        if (!$tree) return [];
         $query = Article::find();
-        $this->load($params);
+        $this->load($params,'');
         $query->andFilterWhere([
             'id'         => $this->id,
             'used'       => $this->used,
-            'tree_id'    => $this->tree_id,
+            'tree_id'    => $tree->id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);

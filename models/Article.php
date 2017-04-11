@@ -5,6 +5,7 @@ namespace mandrapola\article\models;
 use Yii;
 use yii\helpers\Inflector;
 use yii\helpers\Url;
+use mandrapola\article\models;
 
 /**
  * This is the model class for table "article".
@@ -75,7 +76,7 @@ class Article extends \yii\db\ActiveRecord
 
     public function getNext()
     {
-        return Article::find()
+        return self::find()
             ->andWhere(['tree_id' => $this->tree_id])
             ->andWhere(['>', 'created_at', $this->created_at])
             ->orderBy(['created_at' => SORT_ASC])
@@ -84,7 +85,7 @@ class Article extends \yii\db\ActiveRecord
 
     public function getPrev()
     {
-        return Article::find()
+        return self::find()
             ->andWhere(['tree_id' => $this->tree_id])
             ->andWhere(['<', 'created_at', $this->created_at])
             ->orderBy(['created_at' => SORT_DESC])
@@ -105,17 +106,7 @@ class Article extends \yii\db\ActiveRecord
     }
 
     public function getItemNavBar(){
-        return [['label'=>$this->title,'url'=>Url::to(['article/default/view','slug'=>$this->title,'razdel'=>Inflector::slug($this->tree->name)])]];
+        return ['label'=>$this->title,'url'=>Url::to(['article/default/view','slug'=>$this->title,'razdel'=>Inflector::slug($this->tree->name)])];
     }
-//    public function behaviors()
-//    {
-//        return [
-//            [
-//                'class' => SluggableBehavior::className(),
-//                'attribute' => 'alias',
-//                'slugAttribute' => 'alias',
-//            ],
-//        ];
-//    }
 
 }
