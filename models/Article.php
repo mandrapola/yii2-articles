@@ -106,7 +106,7 @@ class Article extends \yii\db\ActiveRecord
     }
 
     public function getItemNavBar(){
-        return ['label'=>$this->title,'url'=>Url::to(['article/default/view','slug'=>$this->title,'razdel'=>Inflector::slug($this->tree->name)])];
+        return ['label'=>$this->title,'url'=>Url::to(['/article/default/view','slug'=>$this->title,'razdel'=>Inflector::slug($this->tree->name)])];
     }
 
 }
