@@ -32,7 +32,6 @@
         ],
         'title',
         'alias',
-        'anons',
         [
             'attribute' => 'used',
             'format'    => 'boolean',

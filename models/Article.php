@@ -109,4 +109,9 @@ class Article extends \yii\db\ActiveRecord
         return ['label'=>$this->title,'url'=>Url::to(['/article/default/view','slug'=>$this->alias,'razdel'=>Inflector::slug($this->tree->name)])];
     }
 
+    public function getMetas()
+    {
+        return $this->hasMany(ArticleMeta::className(),['article_id'=>'id']);
+    }
+
 }

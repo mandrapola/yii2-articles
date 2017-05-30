@@ -45,4 +45,5 @@ return [
     'Update {modelClass}: '                      => 'Обновить {modelClass}:',
     'Updated At'                                 => 'Время обновления',
     'Used'                                       => 'Показывать',
+    'Meta Tag'                                   => 'Метатэг',
 ];
