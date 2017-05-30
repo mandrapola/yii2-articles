@@ -15,7 +15,9 @@ class m170530_111003_create_table_meta extends ExtendMigration
             'content'    => Schema::TYPE_STRING,
         ]);
         $this->addPrimaryKeyExt(['article_id', 'name']);
+
         $this->addForeignKeyExt('article_id','article','id');
+
     }
 
     public function down()
