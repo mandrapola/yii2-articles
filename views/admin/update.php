@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = Yii::t('article', 'Update');
 ?>
 <div class="container">
     <div class="article-update">
-
+        <?=\yii\bootstrap\Html::a(\yii\bootstrap\Html::icon('tags'),\yii\helpers\Url::to(['/article/admin/meta','id'=>$model->id]),['title'=>'Tags', 'aria-label'=>'Tags', 'data-pjax'=>0]);?>
         <h1><?= Html::encode($this->title) ?></h1>
 
         <?= $this->render('_form', [
