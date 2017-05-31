@@ -28,7 +28,7 @@ class AdminController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'view', 'update', 'create', 'delete', 'meta', 'create-tag'],
+                        'actions' => ['index', 'view', 'update', 'create', 'delete', 'meta', 'create-tag', 'delete-tag'],
                         'allow'   => true,
                         'roles'   => ['admin'],
                     ],
@@ -68,6 +68,7 @@ class AdminController extends Controller
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'classContainer' => [],
         ]);
     }
 
@@ -129,8 +130,11 @@ class AdminController extends Controller
     {
         $model = $this->findModel($id);
         if (\Yii::$app->request->isPost){
-            $data = \Yii::$app->request->post();
-
+            $post = \Yii::$app->request->post();
+            $tag = ArticleMeta::findOne($post['ArticleMeta']['id']);
+            if ($tag->load($post)){
+                $tag->save();
+            }
         }
         $tags = $model->tags;
 
@@ -143,10 +147,20 @@ class AdminController extends Controller
     public function actionCreateTag($id){
         $tag = new ArticleMeta();
         $tag->article_id = $id;
-        $tag->name = 'name';
-        $tag->content = 'content';
+        $tag->name = '';
+        $tag->content = '';
         $tag->save();
         $this->redirect(['meta','id'=>$id]);
+    }
+
+    /**
+     * @return
+     */
+    public function actionDeleteTag($id){
+            $tag = ArticleMeta::findOne($id);
+            $article_id = $tag->article_id;
+            $tag->delete();
+        return $this->redirect(['meta','id'=>$article_id]);
     }
 
     /**

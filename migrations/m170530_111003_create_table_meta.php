@@ -1,6 +1,6 @@
 <?php
 
-use common\components\db\ExtendMigration;
+use mandrapola\article\migrations\ExtendMigration;
 use yii\db\mysql\Schema;
 
 class m170530_111003_create_table_meta extends ExtendMigration
@@ -10,11 +10,11 @@ class m170530_111003_create_table_meta extends ExtendMigration
     public function up()
     {
         $this->createTableExt([
+            'id'         => Schema::TYPE_PK,
             'article_id' => Schema::TYPE_INTEGER,
             'name'       => Schema::TYPE_STRING . '(25) NOT NULL',
             'content'    => Schema::TYPE_STRING,
         ]);
-        $this->addPrimaryKeyExt(['article_id', 'name']);
 
         $this->addForeignKeyExt('article_id','article','id');
 

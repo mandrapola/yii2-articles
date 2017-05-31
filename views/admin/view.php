@@ -49,6 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
         <?= Yii::$app->formatter->asRaw($model->body); ?>
+        <?= \mandrapola\article\widgets\article\Article::widget(['model' => $model, 'classContainer' => $classContainer]) ?>
     </div>
 
 </div>

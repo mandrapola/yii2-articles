@@ -13,16 +13,27 @@ class Article extends \yii\bootstrap\Widget
     public $model;
     public $classContainer;
     public $view = 'view';
+    private $tags;
 
     public function init()
     {
         parent::init();
         $this->classContainer = array_reverse($this->classContainer);
         $this->view = $this->model->template ?: 'view';
+        $this->tags = $this->model->tags;
     }
 
     public function run()
     {
+       $this->registerMetaTags();
         return $this->render($this->view, ['model' => $this->model, 'classContainer' => $this->classContainer]);
+    }
+
+    private function registerMetaTags()
+    {
+        foreach ($this->tags as $tag)
+        {
+            if ($tag->name && $tag->content) \Yii::$app->view->registerMetaTag(['name' => $tag->name, 'content' => $tag->content]);
+        }
     }
 }
