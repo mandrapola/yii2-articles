@@ -33,7 +33,15 @@ class Article extends \yii\bootstrap\Widget
     {
         foreach ($this->tags as $tag)
         {
-            if ($tag->name && $tag->content) \Yii::$app->view->registerMetaTag(['name' => $tag->name, 'content' => $tag->content]);
+            if ($tag->name && $tag->content) {
+                switch (strtolower($tag->name)) {
+                    case 'title' :
+                        \Yii::$app->view->title = $tag->content;
+                        break;
+                    default :
+                        \Yii::$app->view->registerMetaTag(['name' => $tag->name, 'content' => $tag->content]);
+                }
+            }
         }
     }
 }
