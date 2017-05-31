@@ -6,7 +6,7 @@
  * Time: 15:49
  */
 
-$this->title .= ' ' . $model->title;
+
 $this->params['breadcrumbs'] = [['label' => $model->title]];
 
 $content = \yii\helpers\Html::tag('h1', $model->title) . Yii::$app->formatter->asRaw($model->body);
