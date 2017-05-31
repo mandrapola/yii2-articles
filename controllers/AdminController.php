@@ -3,6 +3,7 @@
 namespace mandrapola\article\controllers;
 
 use mandrapola\article\models\Article;
+use mandrapola\article\models\ArticleMeta;
 use mandrapola\article\models\ArticleSearch;
 use Yii;
 use yii\filters\AccessControl;
@@ -27,7 +28,7 @@ class AdminController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'view', 'update', 'create', 'delete'],
+                        'actions' => ['index', 'view', 'update', 'create', 'delete', 'meta', 'create-tag'],
                         'allow'   => true,
                         'roles'   => ['admin'],
                     ],
@@ -122,6 +123,33 @@ class AdminController extends Controller
     }
 
     /**
+     * @return
+     */
+    public function actionMeta($id)
+    {
+        $model = $this->findModel($id);
+        if (\Yii::$app->request->isPost){
+            $data = \Yii::$app->request->post();
+
+        }
+        $tags = $model->tags;
+
+        return $this->render('meta', ['model' => $model, 'tags' => $tags]);
+    }
+
+    /**
+     * @return
+     */
+    public function actionCreateTag($id){
+        $tag = new ArticleMeta();
+        $tag->article_id = $id;
+        $tag->name = 'name';
+        $tag->content = 'content';
+        $tag->save();
+        $this->redirect(['meta','id'=>$id]);
+    }
+
+    /**
      * Finds the Article model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
@@ -136,4 +164,5 @@ class AdminController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
 }

@@ -20,7 +20,6 @@ class ArticleMeta extends ActiveRecord
     {
         return [
             [['content','name'], 'string'],
-            [['content','name','article_id'], 'required'],
         ];
     }
 

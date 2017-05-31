@@ -40,7 +40,14 @@
         'created_at',
         'updated_at',
 
-        ['class' => 'yii\grid\ActionColumn'],
+        ['class' => 'yii\grid\ActionColumn',
+            'buttons' => [
+                'tags' => function ($url,$model){
+                    $urlTags = \yii\helpers\Url::to(['/article/admin/meta','id'=>$model->id]);
+                    return \yii\bootstrap\Html::a(\yii\bootstrap\Html::icon('tags'),$urlTags,['title'=>'Tags', 'aria-label'=>'Tags', 'data-pjax'=>0]);
+                }
+            ],
+         'template' => '{tags} {view} {update} {delete}'],
     ],
 ]);
 ; ?>
