@@ -8,16 +8,21 @@ $this->title = Yii::t('article', 'Articles');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <?php
-$tree = \kartik\tree\TreeView::widget([
+$articles = $this->render('articles', ['dataProvider' => $dataProvider, 'searchModel' => $searchModel]);
+$tree = \kartik\tree\TreeView::widget(
 // single query fetch to render the tree
-    'query'          => mandrapola\article\models\Tree::find()->addOrderBy('root, lft'),
+    ['query'          => mandrapola\article\models\Tree::find()->addOrderBy('root, lft'),
     'headingOptions' => ['label' => 'Categories'],
     'isAdmin'        => true,                       // optional (toggle to enable admin mode)
     'displayValue'   => 1,                           // initial display value
     'softDelete'     => true,                        // normally not needed to change
-    'cacheSettings'  => ['enableCache' => true]      // normally not needed to change
+    'cacheSettings'  => ['enableCache' => true]  ,   // normally not needed to change
+//    'nodeAddlViews' => [1 => ['@mandrapola/article/views/admin/articles','dataProvider' => $dataProvider, 'searchModel' => $searchModel]]
+    'nodeAddlViews' => [1 => '@mandrapola/article/views/admin/_articles'],
+//    'params' =>['dataProvider' => $dataProvider,]
+
 ]);
-$articles = $this->render('articles', ['dataProvider' => $dataProvider, 'searchModel' => $searchModel]);
+
 
 ?>
 <div class="content">

@@ -4,7 +4,8 @@
  * User: marat
  * Date: 27.01.17
  * Time: 17:53
- */ ?>
+ */
+?>
     <div class="article-index">
 
         <p>

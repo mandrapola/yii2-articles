@@ -85,6 +85,7 @@ class AdminController extends Controller
 
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
+            $model->load(Yii::$app->request->queryParams);
             return $this->render('create', [
                 'model' => $model,
             ]);
