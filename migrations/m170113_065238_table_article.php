@@ -16,8 +16,8 @@ class m170113_065238_table_article extends Migration
             'body'       => Schema::TYPE_TEXT,
             'used'       => Schema::TYPE_BOOLEAN,
             'tree_id'    => Schema::TYPE_INTEGER,
-            'created_at' => Schema::TYPE_TIMESTAMP,
-            'updated_at' => Schema::TYPE_TIMESTAMP
+            'created_at' => Schema::TYPE_INTEGER,
+            'updated_at' => Schema::TYPE_INTEGER
         ]);
     }
 
