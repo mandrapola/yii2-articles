@@ -1,4 +1,5 @@
 <?php
+
 namespace mandrapola\article\models;
 
 use Yii;
@@ -6,14 +7,33 @@ use yii\helpers\Inflector;
 
 class Tree extends \kartik\tree\models\Tree
 {
-
+    /**
+     * @return string
+     */
     public static function tableName()
     {
         return 'tree';
     }
 
     /**
-     * @return
+     * @param string $slug
+     *
+     * @return bool
+     */
+    public static function findSlug($slug)
+    {
+        $models = self::find()->all();
+        foreach ($models as $model) {
+            if (Inflector::slug($model->name) == $slug) {
+                return $model;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @return mixed
      */
     public function getParent()
     {
@@ -25,22 +45,17 @@ class Tree extends \kartik\tree\models\Tree
             ->one();
     }
 
+    /**
+     * @return mixed
+     */
     public function getRoot()
     {
         return $this->hasOne(Tree::className(), ['id' => 'root']);
     }
 
-    public static function findSlug($slug)
-    {
-        $models = self::find()->all();
-        foreach ($models as $model) {
-            if (Inflector::slug($model->name) == $slug)
-                return $model;
-        }
-
-        return false;
-    }
-
+    /**
+     * @return Article[]
+     */
     public function getArticles()
     {
         return $this->hasMany(Article::className(), ['tree_id' => 'id'])->orderBy(['created_at' => SORT_ASC]);

@@ -30,9 +30,11 @@ class ArticleSearch extends Article
 
         // add conditions that should always apply here
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-        ]);
+        $dataProvider = new ActiveDataProvider(
+            [
+                'query' => $query,
+            ]
+        );
 
         $this->load($params);
 
@@ -41,13 +43,15 @@ class ArticleSearch extends Article
         }
 
         // grid filtering conditions
-        $query->andFilterWhere([
-            'id'         => $this->id,
-            'used'       => $this->used,
-            'tree_id'    => $this->tree_id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-        ]);
+        $query->andFilterWhere(
+            [
+                'id' => $this->id,
+                'used' => $this->used,
+                'tree_id' => $this->tree_id,
+                'created_at' => $this->created_at,
+                'updated_at' => $this->updated_at,
+            ]
+        );
 
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'alias', $this->alias])
@@ -58,23 +62,28 @@ class ArticleSearch extends Article
         return $dataProvider;
     }
 
-    public function itemsNavBar($params){
-        $tree = Tree::findOne(['name'=>$params['tree']]);
-        if (!$tree) return [];
-        $query = Article::find();
-        $this->load($params,'');
-        $query->andFilterWhere([
-            'id'         => $this->id,
-            'used'       => $this->used,
-            'tree_id'    => $tree->id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-        ]);
-        $models =$query->all();
-        foreach($models as $item)
-        {
-            $items[]=$item->itemNavbar;
+    public function itemsNavBar($params)
+    {
+        $tree = Tree::findOne(['name' => $params['tree']]);
+        if (!$tree) {
+            return [];
         }
+        $query = Article::find();
+        $this->load($params, '');
+        $query->andFilterWhere(
+            [
+                'id' => $this->id,
+                'used' => $this->used,
+                'tree_id' => $tree->id,
+                'created_at' => $this->created_at,
+                'updated_at' => $this->updated_at,
+            ]
+        );
+        $models = $query->all();
+        foreach ($models as $item) {
+            $items[] = $item->itemNavbar;
+        }
+
         return $items;
-}
+    }
 }

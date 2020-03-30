@@ -1,11 +1,11 @@
 <?php
+
 namespace mandrapola\article\widgets\article;
 
 /**
- * Created by PhpStorm.
- * User: marat
- * Date: 15.01.17
- * Time: 14:34
+ * Class Article
+ *
+ * @package mandrapola\article\widgets\article
  */
 class Article extends \yii\bootstrap\Widget
 {
@@ -25,14 +25,14 @@ class Article extends \yii\bootstrap\Widget
 
     public function run()
     {
-       $this->registerMetaTags();
+        $this->registerMetaTags();
+
         return $this->render($this->view, ['model' => $this->model, 'classContainer' => $this->classContainer]);
     }
 
     private function registerMetaTags()
     {
-        foreach ($this->tags as $tag)
-        {
+        foreach ($this->tags as $tag) {
             if ($tag->name && $tag->content) {
                 switch (strtolower($tag->name)) {
                     case 'title' :

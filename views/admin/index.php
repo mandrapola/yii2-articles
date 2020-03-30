@@ -17,10 +17,7 @@ $tree = \kartik\tree\TreeView::widget(
     'displayValue'   => 1,                           // initial display value
     'softDelete'     => true,                        // normally not needed to change
     'cacheSettings'  => ['enableCache' => true]  ,   // normally not needed to change
-//    'nodeAddlViews' => [1 => ['@mandrapola/article/views/admin/articles','dataProvider' => $dataProvider, 'searchModel' => $searchModel]]
     'nodeAddlViews' => [1 => '@mandrapola/article/views/admin/_articles'],
-//    'params' =>['dataProvider' => $dataProvider,]
-
 ]);
 
 

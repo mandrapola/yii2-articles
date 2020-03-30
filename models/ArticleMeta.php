@@ -1,28 +1,37 @@
 <?php
+
 namespace mandrapola\article\models;
+
 use yii\db\ActiveRecord;
 
 /**
- * Created by PhpStorm.
- * User: marat
- * Date: 30.05.17
- * Time: 15:00
+ * Class ArticleMeta
+ *
+ * @package mandrapola\article\models
  */
 class ArticleMeta extends ActiveRecord
 {
+    /**
+     * @return string
+     */
     public static function tableName()
     {
         return 'article_meta';
     }
 
-
+    /**
+     * @return array
+     */
     public function rules()
     {
         return [
-            [['content','name'], 'string'],
+            [['content', 'name'], 'string'],
         ];
     }
 
+    /**
+     * @return array
+     */
     public function attributeLabels()
     {
         return [

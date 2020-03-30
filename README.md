@@ -1,6 +1,6 @@
 Articles
 ========
-Модуль статей для Yii2
+Articles module for Yii2
 
 Installation
 ------------

@@ -1,10 +1,10 @@
 <?php
 namespace mandrapola\article\migrations;
+
 /**
- * Created by PhpStorm.
- * User: marat
- * Date: 21.10.16
- * Time: 14:03
+ * Class ExtendMigration
+ *
+ * @package mandrapola\article\migrations
  */
 class ExtendMigration extends Migration
 {
