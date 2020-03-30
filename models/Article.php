@@ -43,7 +43,13 @@ class Article extends \yii\db\ActiveRecord
             [['created_at', 'updated_at'], 'safe'],
             [['title', 'alias', 'anons'], 'string', 'max' => 250],
             [['template'], 'string'],
-            [['tree_id'], 'exist', 'skipOnError' => true, 'targetClass' => Tree::className(), 'targetAttribute' => ['tree_id' => 'id']],
+            [
+                ['tree_id'],
+                'exist',
+                'skipOnError' => true,
+                'targetClass' => Tree::className(),
+                'targetAttribute' => ['tree_id' => 'id'],
+            ],
         ];
     }
 
@@ -53,16 +59,16 @@ class Article extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id'         => Yii::t('article', 'ID'),
-            'title'      => Yii::t('article', 'Title'),
-            'alias'      => Yii::t('article', 'Alias'),
-            'anons'      => Yii::t('article', 'Anons'),
-            'body'       => Yii::t('article', 'Body'),
-            'used'       => Yii::t('article', 'Used'),
-            'tree_id'    => Yii::t('article', 'Tree ID'),
+            'id' => Yii::t('article', 'ID'),
+            'title' => Yii::t('article', 'Title'),
+            'alias' => Yii::t('article', 'Alias'),
+            'anons' => Yii::t('article', 'Anons'),
+            'body' => Yii::t('article', 'Body'),
+            'used' => Yii::t('article', 'Used'),
+            'tree_id' => Yii::t('article', 'Tree ID'),
             'created_at' => Yii::t('article', 'Created At'),
             'updated_at' => Yii::t('article', 'Updated At'),
-            'template'   => Yii::t('article', 'Template'),
+            'template' => Yii::t('article', 'Template'),
         ];
     }
 
@@ -74,6 +80,9 @@ class Article extends \yii\db\ActiveRecord
         return $this->hasOne(Tree::className(), ['id' => 'tree_id']);
     }
 
+    /**
+     * @return Article
+     */
     public function getNext()
     {
         return self::find()
@@ -83,6 +92,9 @@ class Article extends \yii\db\ActiveRecord
             ->one();
     }
 
+    /**
+     * @return Article
+     */
     public function getPrev()
     {
         return self::find()
@@ -92,6 +104,11 @@ class Article extends \yii\db\ActiveRecord
             ->one();
     }
 
+    /**
+     * @param $insert
+     *
+     * @return bool
+     */
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
@@ -102,16 +119,27 @@ class Article extends \yii\db\ActiveRecord
         }
 
         return false;
-
     }
 
-    public function getItemNavBar(){
-        return ['label'=>$this->title,'url'=>Url::to(['/article/default/view','slug'=>$this->alias,'razdel'=>Inflector::slug($this->tree->name)])];
+    /**
+     * @return array
+     */
+    public function getItemNavBar()
+    {
+        return [
+            'label' => $this->title,
+            'url' => Url::to(
+                ['/article/default/view', 'slug' => $this->alias, 'razdel' => Inflector::slug($this->tree->name)]
+            ),
+        ];
     }
 
+    /**
+     * @return ArticleMeta[]
+     */
     public function getTags()
     {
-        return $this->hasMany(ArticleMeta::className(),['article_id'=>'id']);
+        return $this->hasMany(ArticleMeta::className(), ['article_id' => 'id']);
     }
 
 }

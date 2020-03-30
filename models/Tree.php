@@ -5,6 +5,11 @@ namespace mandrapola\article\models;
 use Yii;
 use yii\helpers\Inflector;
 
+/**
+ * Class Tree
+ *
+ * @package mandrapola\article\models
+ */
 class Tree extends \kartik\tree\models\Tree
 {
     /**
@@ -18,7 +23,7 @@ class Tree extends \kartik\tree\models\Tree
     /**
      * @param string $slug
      *
-     * @return bool
+     * @return bool|Tree
      */
     public static function findSlug($slug)
     {
@@ -33,6 +38,7 @@ class Tree extends \kartik\tree\models\Tree
     }
 
     /**
+     * Return parent branch
      * @return mixed
      */
     public function getParent()
@@ -46,6 +52,8 @@ class Tree extends \kartik\tree\models\Tree
     }
 
     /**
+     * Return root branch
+     *
      * @return mixed
      */
     public function getRoot()
