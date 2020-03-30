@@ -3,7 +3,7 @@
 namespace mandrapola\article\widgets\article;
 
 /**
- * Class Article
+ * Widget Article
  *
  * @package mandrapola\article\widgets\article
  */

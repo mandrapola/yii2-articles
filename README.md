@@ -25,7 +25,9 @@ to the require section of your `composer.json` file.
 Usage
 -----
 
-Once the extension is installed, simply use it in your code by  :
-
 ```php
-<?= \mandrapola\articles\AutoloadExample::widget(); ?>```
+<?= \mandrapola\article\widgets\article\Article::widget(['model' => $model, 'classContainer' => $classContainer]) ?>
+```  
+
+$model - Article entity.  
+$classContainer - Names containers for render content. Default ['container', 'content'].  
