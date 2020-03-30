@@ -28,14 +28,23 @@ class AdminController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'view', 'update', 'create', 'delete', 'meta', 'create-tag', 'delete-tag'],
-                        'allow'   => true,
-                        'roles'   => ['admin'],
+                        'actions' => [
+                            'index',
+                            'view',
+                            'update',
+                            'create',
+                            'delete',
+                            'meta',
+                            'create-tag',
+                            'delete-tag',
+                        ],
+                        'allow' => true,
+                        'roles' => ['admin'],
                     ],
                 ],
             ],
-            'verbs'  => [
-                'class'   => VerbFilter::className(),
+            'verbs' => [
+                'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
                 ],
@@ -45,76 +54,112 @@ class AdminController extends Controller
 
     /**
      * Lists all Article models.
+     *
      * @return mixed
      */
     public function actionIndex()
     {
         $searchModel = new ArticleSearch();
-//        var_dump(Yii::$app->request->queryParams);die;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel'  => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+        return $this->render(
+            'index',
+            [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]
+        );
     }
 
     /**
      * Displays a single Article model.
+     *
      * @param integer $id
+     *
      * @return mixed
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-            'classContainer' => [],
-        ]);
+        return $this->render(
+            'view',
+            [
+                'model' => $this->findModel($id),
+                'classContainer' => [],
+            ]
+        );
+    }
+
+    /**
+     * Finds the Article model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     *
+     * @param integer $id
+     *
+     * @return Article the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if (($model = Article::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
     }
 
     /**
      * Creates a new Article model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     *
      * @return mixed
      */
     public function actionCreate()
     {
         $model = new Article();
-//        var_dump(Yii::$app->request->post());die;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             $model->load(Yii::$app->request->queryParams);
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+
+            return $this->render(
+                'create',
+                [
+                    'model' => $model,
+                ]
+            );
         }
     }
 
     /**
      * Updates an existing Article model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     *
      * @param integer $id
+     *
      * @return mixed
      */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-//        var_dump(Yii::$app->request->post());die;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+            return $this->render(
+                'update',
+                [
+                    'model' => $model,
+                ]
+            );
         }
     }
 
     /**
      * Deletes an existing Article model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     *
      * @param integer $id
+     *
      * @return mixed
      */
     public function actionDelete($id)
@@ -130,10 +175,10 @@ class AdminController extends Controller
     public function actionMeta($id)
     {
         $model = $this->findModel($id);
-        if (\Yii::$app->request->isPost){
+        if (\Yii::$app->request->isPost) {
             $post = \Yii::$app->request->post();
             $tag = ArticleMeta::findOne($post['ArticleMeta']['id']);
-            if ($tag->load($post)){
+            if ($tag->load($post)) {
                 $tag->save();
             }
         }
@@ -145,39 +190,29 @@ class AdminController extends Controller
     /**
      * @return
      */
-    public function actionCreateTag($id){
+    public function actionCreateTag($id)
+    {
         $tag = new ArticleMeta();
         $tag->article_id = $id;
         $tag->name = '';
         $tag->content = '';
         $tag->save();
-        $this->redirect(['meta','id'=>$id]);
+        $this->redirect(['meta', 'id' => $id]);
     }
 
     /**
-     * @return
+     * Deleted article tags
+     *
+     * @param $id
+     *
+     * @return mixed
      */
-    public function actionDeleteTag($id){
-            $tag = ArticleMeta::findOne($id);
-            $article_id = $tag->article_id;
-            $tag->delete();
-        return $this->redirect(['meta','id'=>$article_id]);
-    }
-
-    /**
-     * Finds the Article model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Article the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel($id)
+    public function actionDeleteTag($id)
     {
-        if (($model = Article::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-    }
+        $tag = ArticleMeta::findOne($id);
+        $article_id = $tag->article_id;
+        $tag->delete();
 
+        return $this->redirect(['meta', 'id' => $article_id]);
+    }
 }

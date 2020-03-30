@@ -5,10 +5,9 @@ use yii\base\Model;
 use yii\helpers\Html;
 
 /**
- * Created by PhpStorm.
- * User: marat
- * Date: 15.01.17
- * Time: 14:34
+ * Class CKEditor
+ *
+ * @package mandrapola\article\widgets\ckeditor
  */
 class CKEditor extends \yii\bootstrap\Widget
 {
@@ -23,7 +22,6 @@ class CKEditor extends \yii\bootstrap\Widget
 
     public function init()
     {
-//        $this->options['id'] = Html::getInputId($this->model, $this->attribute);
         parent::init();
 
         if ($this->hasModel()) {

@@ -1,17 +1,17 @@
 <?php
+
 namespace mandrapola\article\widgets\ckeditor;
 
 use yii\web\AssetBundle;
 
 /**
- * Created by PhpStorm.
- * User: marat
- * Date: 15.01.17
- * Time: 14:36
+ * Class CKEditorAsset
+ *
+ * @package mandrapola\article\widgets\ckeditor
  */
 class CKEditorAsset extends AssetBundle
 {
-    public $sourcePath = __DIR__ . '/assets/all';
+    public $sourcePath = __DIR__.'/assets/all';
     public $css = [
 
     ];
@@ -34,7 +34,7 @@ class CKEditorAsset extends AssetBundle
         foreach ($this->head_js as $js) {
             $options = [];
             $options["position"] = \yii\web\View::POS_HEAD;
-            $url = \yii\helpers\Url::to($this->baseUrl . '/' . $js);
+            $url = \yii\helpers\Url::to($this->baseUrl.'/'.$js);
             $view->registerJsFile($url, $options);
         }
 
