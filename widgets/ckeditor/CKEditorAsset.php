@@ -3,7 +3,6 @@
 namespace mandrapola\article\widgets\ckeditor;
 
 use yii\web\AssetBundle;
-
 /**
  * Class CKEditorAsset
  *
@@ -18,7 +17,7 @@ class CKEditorAsset extends AssetBundle
     public $js = [
 
     ];
-    public $head_js = [
+    public $headJs = [
         'ckeditor.js',
     ];
     public $publishOptions = [
@@ -31,7 +30,7 @@ class CKEditorAsset extends AssetBundle
 
     public function registerAssetFiles($view)
     {
-        foreach ($this->head_js as $js) {
+        foreach ($this->headJs as $js) {
             $options = [];
             $options["position"] = \yii\web\View::POS_HEAD;
             $url = \yii\helpers\Url::to($this->baseUrl.'/'.$js);

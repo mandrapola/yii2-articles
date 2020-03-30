@@ -11,6 +11,9 @@ use yii\data\ActiveDataProvider;
  */
 class ArticleSearch extends Article
 {
+    /**
+     * @inheritDoc
+     */
     public function scenarios()
     {
         // bypass scenarios() implementation in the parent class
@@ -22,13 +25,11 @@ class ArticleSearch extends Article
      *
      * @param array $params
      *
-     * @return ActiveDataProvider
+     * @return ActiveDataProvider\
      */
     public function search($params)
     {
         $query = Article::find();
-
-        // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider(
             [
@@ -42,7 +43,6 @@ class ArticleSearch extends Article
             return $dataProvider;
         }
 
-        // grid filtering conditions
         $query->andFilterWhere(
             [
                 'id' => $this->id,
@@ -62,6 +62,13 @@ class ArticleSearch extends Article
         return $dataProvider;
     }
 
+    /**
+     * Return articles by params
+     *
+     * @param array $params
+     *
+     * @return Article[]
+     */
     public function itemsNavBar($params)
     {
         $tree = Tree::findOne(['name' => $params['tree']]);
